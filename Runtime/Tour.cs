@@ -158,30 +158,8 @@ public class Tour : MonoBehaviour
         foreach (var fieldItem in fieldItems)
         {
             var fieldItemMarker = Instantiate(baseFieldItemGameObject, transform);
-            fieldItemMarker.fieldItem = fieldItem;
-            var vertices = new Vector3[]
-            {
-                fieldItem.vertices[0].Orientation * Vector3.forward,
-                fieldItem.vertices[1].Orientation * Vector3.forward,
-                fieldItem.vertices[2].Orientation * Vector3.forward,
-                fieldItem.vertices[3].Orientation * Vector3.forward
-            };
-            var tris = new int[]
-            {
-                0,1,2,
-                0,2,3
-            };
-            MeshRenderer meshRenderer = fieldItemMarker.gameObject.AddComponent<MeshRenderer>();
-            var mat = AssetDatabase.LoadAssetAtPath<Material>("Packages/com.rexagon.tour-creator/Materials/FieldItem.mat");
-            meshRenderer.sharedMaterial = mat;
-            MeshFilter meshFilter = fieldItemMarker.gameObject.AddComponent<MeshFilter>();
-            Mesh mesh = new Mesh
-            {
-                vertices = vertices,
-                triangles = tris
-            };
-            meshFilter.mesh = mesh;
-            fieldItemMarker.gameObject.AddComponent<MeshCollider>();
+            fieldItemMarker.Init(fieldItem);
+            _markers.Add(fieldItemMarker);
         }
 
     }

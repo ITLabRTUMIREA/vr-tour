@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 
-#if UNITY_EDITOR
 using UnityEngine;
-#endif
 
+#if UNITY_EDITOR
 [DisallowMultipleComponent]
+#endif
 public abstract class TextureSource : MonoBehaviour
 {
     public enum Type

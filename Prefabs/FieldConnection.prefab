@@ -44,3 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fieldItem: {fileID: 0}
+  fieldItemContainerPrefab: {fileID: 8750028669666884008, guid: 4581958421bddf84c88d7bcffb019bc6,
+    type: 3}
+  fieldItemMaterial: {fileID: 2100000, guid: 3f726480c55ac0144a85fa02b8e3f043, type: 2}
+  fieldItemContainerMaterial: {fileID: 0}

@@ -14,12 +14,36 @@ public class TourEditor
     /// <summary>
     /// Main viewer prefab
     /// </summary>
-    public static GameObject ViewSpherePrefab;
+    private static GameObject _viewSpherePrefab;
+    public static GameObject ViewSpherePrefab
+    {
+        get
+        {
+            GameObject viewSpherePrefab = _viewSpherePrefab ?? AssetDatabase.LoadAssetAtPath<GameObject>("Packages/com.rexagon.tour-creator/Prefabs/State.prefab");
+            return viewSpherePrefab;
+        }
+        set
+        {
+            _viewSpherePrefab = value;
+        }
+    }
 
     /// <summary>
     /// Prefab used when spawning new state from State Editor window
     /// </summary>
-    public static GameObject StatePrefab;
+    private static GameObject _statePrefab;
+    public static GameObject StatePrefab
+    {
+        get
+        {
+            GameObject statePrefab = _statePrefab ?? AssetDatabase.LoadAssetAtPath<GameObject>("Packages/com.rexagon.tour-creator/Prefabs/State.prefab");
+            return statePrefab;
+        }
+        set
+        {
+            _statePrefab = value;
+        }
+    }
 
     /// <summary>
     /// State graph renderer object
@@ -37,7 +61,7 @@ public class TourEditor
     private const string MENU_ITEM_SHOW_LABELS = GROUP_NAME + "/Show Labels";
     private const string MENU_ITEM_SHOW_ITEMS = GROUP_NAME + "/Show Items";
 
-    private const string MENU_ITEM_BUILD_DESKTOP = GROUP_NAME + "/Build For Desktop (TODO)";
+    private const string MENU_ITEM_BUILD_DESKTOP = GROUP_NAME + "/Build For Desktop";
     private const string MENU_ITEM_BUILD_ANDROID = GROUP_NAME + "/Build For Android (TODO)";
     private const string MENU_ITEM_BUILD_WEB = GROUP_NAME + "/Build For WEB";
 
@@ -57,12 +81,10 @@ public class TourEditor
         };
 
         // Find view sphere prefab
-        ViewSpherePrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Packages/com.rexagon.tour-creator/Prefabs/ViewSphere.prefab");
-        Assert.IsNotNull(ViewSpherePrefab, "ViewSphere prefab not found");
+        _viewSpherePrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Packages/com.rexagon.tour-creator/Prefabs/ViewSphere.prefab");
 
         // Find state prefab
-        StatePrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Packages/com.rexagon.tour-creator/Prefabs/State.prefab");
-        Assert.IsNotNull(StatePrefab, "State prefab not found");
+        _statePrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Packages/com.rexagon.tour-creator/Prefabs/State.prefab");
 
         // Create renderer
         StateGraphRenderer = new StateGraphRenderer();
@@ -83,7 +105,6 @@ public class TourEditor
             SceneView.RepaintAll();
         };
     }
-
 
     [MenuItem(MENU_ITEM_NEW_TOUR, false, 0)]
     static void MenuItemNewTour()
@@ -129,8 +150,6 @@ public class TourEditor
     [MenuItem(MENU_ITEM_BUILD_DESKTOP, false, 40)]
     private static void MenuItemBuildDesktop()
     {
-        EditorUtility.DisplayDialog("Not supported", "Desktop build not supported yet", "Ok");
-        return;
         ApplicationBuilder.Build(ApplicationBuilder.BuildType.Desktop);
     }
 
@@ -138,8 +157,7 @@ public class TourEditor
     private static void MenuItemBuildAndroid()
     {
         EditorUtility.DisplayDialog("Not supported", "Android build not supported yet", "Ok");
-        return;
-        ApplicationBuilder.Build(ApplicationBuilder.BuildType.Android);
+        //ApplicationBuilder.Build(ApplicationBuilder.BuildType.Android);
     }
 
     [MenuItem(MENU_ITEM_BUILD_WEB, false, 42)]

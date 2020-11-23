@@ -50,13 +50,14 @@ MonoBehaviour:
     type: 3}
   groupConnectionMarkerPrefab: {fileID: 8700229048635914650, guid: 44d30eda200698b45912b222c70a5cdd,
     type: 3}
+  baseFieldItemGameObject: {fileID: 9207902796742240917, guid: 4c024b27a1b002343abc4665c8645cfa,
+    type: 3}
   defaultTexture: {fileID: 2800000, guid: 8a89827e06702ab46ae0525a1cbf9656, type: 3}
   logoTexture: {fileID: 0}
   transitionSpeed: 2
   colorSchemes:
   - name: default
     color: {r: 1, g: 0, b: 0, a: 1}
-  linkPrefix: 
 --- !u!1 &6536200817643923707
 GameObject:
   m_ObjectHideFlags: 0
@@ -112,6 +113,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -144,8 +146,9 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6536200817643923707}
   m_Enabled: 1
-  serializedVersion: 9
+  serializedVersion: 10
   m_Type: 2
+  m_Shape: 0
   m_Color: {r: 0.990566, g: 0.8907989, b: 0.83637416, a: 1}
   m_Intensity: 2.2
   m_Range: 10

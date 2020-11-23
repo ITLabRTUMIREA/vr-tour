@@ -165,7 +165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   markersLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 4294967295
   markerLabelPrefab: {fileID: 2623999001355146337, guid: 8de36c24ddd8b4c488a962e66ad1e1bf,
     type: 3}
   sensitivityX: 3

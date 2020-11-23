@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Video;
 
 namespace Excursion360_Builder.Shared.States.Items.Field
 {
@@ -13,19 +14,17 @@ namespace Excursion360_Builder.Shared.States.Items.Field
 
         public string title;
 
+        public ContentType contentType;
+
         public Texture texture;
+        public VideoClip videoClip;
 
 
 #if UNITY_EDITOR
         public bool isOpened;
 #endif
-        private void Reset()
+        public void Reset()
         {
-            if (vertices.Length != 0)
-            {
-                return;
-
-            }
             vertices = new FieldVertex[]
             {
                 new FieldVertex{ index = 0 },
@@ -33,6 +32,14 @@ namespace Excursion360_Builder.Shared.States.Items.Field
                 new FieldVertex{ index = 2, Orientation = Quaternion.AngleAxis(45, Vector3.up) * Quaternion.AngleAxis(45, Vector3.right) },
                 new FieldVertex{ index = 3, Orientation = Quaternion.AngleAxis(45, Vector3.right) }
             };
+
+            texture = null;
+        }
+
+        public enum ContentType
+        {
+            Photo,
+            Video
         }
     }
 }
